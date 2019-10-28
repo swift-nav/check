@@ -48,8 +48,12 @@ configure_file(check.h.in check.h)
 # Enable finding check.h
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+if(TARGET compat)
+  set(LIBCOMPAT "compat")
+endif()
+
 add_library(check STATIC ${SOURCES} ${HEADERS})
-target_link_libraries(check ${LIBM} ${LIBRT} ${SUBUNIT})
+target_link_libraries(check PUBLIC ${LIBM} ${LIBRT} ${SUBUNIT} ${LIBCOMPAT})
 
 target_include_directories(check
   PUBLIC
@@ -62,11 +66,9 @@ if(MSVC)
   add_definitions(-DCK_DLL_EXP=_declspec\(dllexport\))
 endif (MSVC)
 
-install(TARGETS check 
-  EXPORT check
+install(TARGETS check
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
 
 install(FILES ${CMAKE_BINARY_DIR}/src/check.h DESTINATION include)
-install(EXPORT check DESTINATION cmake)
