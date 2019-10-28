@@ -71,4 +71,4 @@ install(TARGETS check
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
 
-install(FILES ${CMAKE_BINARY_DIR}/src/check.h DESTINATION include)
+install(FILES ${PROJECT_BINARY_DIR}/src/check.h DESTINATION include)
