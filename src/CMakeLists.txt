@@ -66,9 +66,11 @@ if(MSVC)
   add_definitions(-DCK_DLL_EXP=_declspec\(dllexport\))
 endif (MSVC)
 
+if(CHECK_INSTALL)
 install(TARGETS check
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
 
 install(FILES ${PROJECT_BINARY_DIR}/src/check.h DESTINATION include)
+endif()

@@ -317,6 +317,8 @@ else(HAVE_SUBUNIT)
     add_definitions(-DENABLE_SUBUNIT=0)
 endif (HAVE_SUBUNIT)
 
+option(CHECK_INSTALL "Install libcheck and headers" ON)
+
 ###############################################################################
 # Generate "config.h" from "cmake/config.h.cmake"
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.h.in
@@ -326,7 +328,9 @@ add_definitions(-DHAVE_CONFIG_H)
 set(CONFIG_HEADER ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/check_stdint.h.in
   ${CMAKE_CURRENT_BINARY_DIR}/check_stdint.h)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/check_stdint.h DESTINATION include)
+if(CHECK_INSTALL)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/check_stdint.h DESTINATION include)
+endif()
 
 ###############################################################################
 # Subdirectories
