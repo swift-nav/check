@@ -51,6 +51,13 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 add_library(check STATIC ${SOURCES} ${HEADERS})
 target_link_libraries(check ${LIBM} ${LIBRT} ${SUBUNIT})
 
+target_include_directories(check
+  PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+  $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  )
+
 if(MSVC)
   add_definitions(-DCK_DLL_EXP=_declspec\(dllexport\))
 endif (MSVC)
