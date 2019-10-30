@@ -305,6 +305,8 @@ check_library_exists(rt clock_gettime "" HAVE_LIBRT)
 if (HAVE_LIBRT)
     set(LIBRT "rt")
     ADD_DEFINITIONS(-DHAVE_LIBRT=1)
+else ()
+  set(LIBRT "")
 endif (HAVE_LIBRT)
 
 check_library_exists(subunit subunit_test_start "" HAVE_SUBUNIT)
