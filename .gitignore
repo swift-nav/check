@@ -60,7 +60,7 @@ build-aus
 check.pc
 check_stdint.h
 test.out
-config.h
+# config.h
 config.log
 config.status
 configure
@@ -73,7 +73,7 @@ ltsugar.m4
 ltversion.m4
 version.texi
 lt~obsolete.m4
-check.h
+# check.h
 exported.sym
 stamp-h1
 stamp-vti
