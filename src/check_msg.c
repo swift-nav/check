@@ -19,6 +19,7 @@
  */
 
 #include "../lib/libcompat.h"
+#include <unistd.h>
 
 #include <sys/types.h>
 #include <stdlib.h>
